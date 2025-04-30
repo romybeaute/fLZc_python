@@ -1,6 +1,7 @@
 *.o
 *.obj
 *.d
+*.dSYM 
 
 # we want to ignore the test binaries, but keep the README.md,
 # so that the directory does not disappear from GitHub

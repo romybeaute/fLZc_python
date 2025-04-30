@@ -1,0 +1,4 @@
+.LZ76c_benchmark.o: LZ76c_benchmark.c LZ76c.h utils.h mt64.h
+LZ76c.h:
+utils.h:
+mt64.h:

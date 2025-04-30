@@ -1,0 +1,14 @@
+[build-system]
+requires = ["scikit-build-core", "cmake", "pybind11", "numpy"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "fLZc"
+version = "0.1.0"
+description = "Python wrapper for fLZc complexity measure"
+authors = [{ name = "Romy Beauté", email = "r.beaut@sussex.ac.uk" }]
+requires-python = ">=3.7"
+dependencies = ["numpy"]
+
+[tool.scikit-build]
+wheel.packages = ["fLZc_python"]

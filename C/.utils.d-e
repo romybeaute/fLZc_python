@@ -1,0 +1,4 @@
+.utils.o: utils.c khashl.h utils.h mt64.h
+khashl.h:
+utils.h:
+mt64.h:
