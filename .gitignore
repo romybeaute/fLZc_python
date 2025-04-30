@@ -3,13 +3,40 @@
 *.d
 *.dSYM 
 
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+
+
 # we want to ignore the test binaries, but keep the README.md,
 # so that the directory does not disappear from GitHub
 C/bin/*
 !C/bin/README.md
 
-# we want to keep the .mex files
-# matlab/mex/*
 
 matlab/data/*
 !matlab/data/README.md
+
+
+# Virtual environments
+.flzcvenv/
+
+# MacOS
+.DS_Store
+
+# Logs and IDEs
+*.log
+.vscode/
+.idea/
+
+
+
+# Build and install artifacts
+build/
+dist/
+*.egg-info/
+*.so
+*.dylib
+*.dll
+*.pyd
+_skbuild/
