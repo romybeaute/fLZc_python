@@ -1,5 +1,0 @@
-.LZ78c_test.o: LZ78c_test.c LZ78c.h utils.h mt64.h LZ76c.h
-LZ78c.h:
-utils.h:
-mt64.h:
-LZ76c.h:

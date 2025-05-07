@@ -1,4 +1,0 @@
-.LZ78c_benchmark.o: LZ78c_benchmark.c LZ78c.h utils.h mt64.h
-LZ78c.h:
-utils.h:
-mt64.h:

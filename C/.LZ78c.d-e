@@ -1,5 +1,0 @@
-.LZ78c.o: LZ78c.c khashl.h LZ78c.h utils.h mt64.h
-khashl.h:
-LZ78c.h:
-utils.h:
-mt64.h:
