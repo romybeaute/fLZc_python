@@ -8,11 +8,15 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "fLZc"
-version = "0.1.0"
-description = "Python wrapper for fLZc complexity measure"
-readme = "README.md"
+version = "0.1.1"
+description = "Python wrapper for fLZc complexity measure (based on https://github.com/lcbarnett/fLZc)"
+readme = "fLZc_python/README.md"
 requires-python = ">=3.8"
-authors = [{ name = "Romy Beauté", email = "r.beaut@sussex.ac.uk" }]
+authors = [
+{ name = "Lionel Barnett",      email = "lionelb@sussex.ac.uk" },
+  { name = "Romy Beauté",         email = "r.beaut@sussex.ac.uk" }
+]
+license = { text = "MIT" }
 dependencies = ["numpy"]
 
 [tool.scikit-build]
