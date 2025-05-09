@@ -6,12 +6,12 @@ file(GLOB CORE_SRCS
     "${CMAKE_CURRENT_SOURCE_DIR}/fLZc_python/core/*.c"
 )
 
-add_library(liblzc SHARED ${CORE_SRCS})
-target_include_directories(liblzc PUBLIC
+add_library(lzc SHARED ${CORE_SRCS})
+target_include_directories(lzc PUBLIC
     "${CMAKE_CURRENT_SOURCE_DIR}/fLZc_python/core"
 )
 
-install(TARGETS liblzc
+install(TARGETS lzc
         RUNTIME DESTINATION fLZc_python
         LIBRARY DESTINATION fLZc_python
         ARCHIVE DESTINATION fLZc_python)
