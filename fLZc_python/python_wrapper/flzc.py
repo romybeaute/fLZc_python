@@ -2,7 +2,8 @@ import ctypes
 import numpy as np
 from typing import Tuple
 import os
-
+import sys
+import importlib.resources as pkg_res
 
 DSEPCHAR = '.'
 
@@ -11,33 +12,34 @@ DSEPCHAR = '.'
 
 class FLZC:
     def __init__(self, lib_path=None):
-        # if lib_path is None:
-        #     lib_path = os.path.join(
-        #         os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"liblzc.dylib")
-        # if not os.path.exists(lib_path):
-        #     raise FileNotFoundError(f"liblzc.dylib not found at: {lib_path}")
+        ext = {
+            "darwin": ".dylib",
+            "linux":  ".so",
+            "win32":  ".dll",
+        }.get(sys.platform, ".so")
 
         if lib_path is None:
-            # 1) Try source-tree location: fLZc_python/liblzc.dylib
             base = os.path.dirname(os.path.abspath(__file__))
-            candidate = os.path.abspath(os.path.join(base, os.pardir, "liblzc.dylib"))
+            # 1) source‐tree copy
+            candidate = os.path.abspath(os.path.join(base, os.pardir, "liblzc" + ext))
             if os.path.exists(candidate):
                 lib_path = candidate
             else:
-                # 2) Fallback to the installed package location
+                # 2) installed package copy
                 try:
-                    import importlib.resources as pkg_res
                     pkg_root = pkg_res.files("fLZc_python")
-                    candidate2 = str(pkg_root / "liblzc.dylib")
+                    candidate2 = str(pkg_root / f"liblzc{ext}")
                     if os.path.exists(candidate2):
                         lib_path = candidate2
                     else:
-                        lib_path = candidate  # will error below
+                        lib_path = candidate
                 except Exception:
                     lib_path = candidate
+
         if not os.path.exists(lib_path):
-            raise FileNotFoundError(f"liblzc.dylib not found at: {lib_path}")
-        self.lib = ctypes.CDLL(lib_path) # loads the COMPILED binary (.dylib)
+            raise FileNotFoundError(f"liblzc{ext} not found at: {lib_path}")
+
+        self.lib = ctypes.CDLL(lib_path)
         self._define_prototypes()
         
     
