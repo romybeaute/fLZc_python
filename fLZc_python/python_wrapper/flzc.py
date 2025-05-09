@@ -11,9 +11,30 @@ DSEPCHAR = '.'
 
 class FLZC:
     def __init__(self, lib_path=None):
+        # if lib_path is None:
+        #     lib_path = os.path.join(
+        #         os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"liblzc.dylib")
+        # if not os.path.exists(lib_path):
+        #     raise FileNotFoundError(f"liblzc.dylib not found at: {lib_path}")
+
         if lib_path is None:
-            lib_path = os.path.join(
-                os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"liblzc.dylib")
+            # 1) Try source-tree location: fLZc_python/liblzc.dylib
+            base = os.path.dirname(os.path.abspath(__file__))
+            candidate = os.path.abspath(os.path.join(base, os.pardir, "liblzc.dylib"))
+            if os.path.exists(candidate):
+                lib_path = candidate
+            else:
+                # 2) Fallback to the installed package location
+                try:
+                    import importlib.resources as pkg_res
+                    pkg_root = pkg_res.files("fLZc_python")
+                    candidate2 = str(pkg_root / "liblzc.dylib")
+                    if os.path.exists(candidate2):
+                        lib_path = candidate2
+                    else:
+                        lib_path = candidate  # will error below
+                except Exception:
+                    lib_path = candidate
         if not os.path.exists(lib_path):
             raise FileNotFoundError(f"liblzc.dylib not found at: {lib_path}")
         self.lib = ctypes.CDLL(lib_path) # loads the COMPILED binary (.dylib)
