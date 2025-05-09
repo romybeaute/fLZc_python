@@ -8,7 +8,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "fLZc"
-version = "0.1.1"
+version = "0.1.2"
 description = "Python wrapper for fLZc complexity measure (based on https://github.com/lcbarnett/fLZc)"
 readme = "fLZc_python/README.md"
 requires-python = ">=3.8"
