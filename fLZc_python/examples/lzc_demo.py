@@ -99,6 +99,7 @@ def main():
 
     plt.tight_layout()
     plt.show()
+    return c76,c78
 
 if __name__ == "__main__":
     main()
