@@ -40,3 +40,5 @@ dist/
 *.dll
 *.pyd
 _skbuild/
+__pycache__/
+*.pyc
