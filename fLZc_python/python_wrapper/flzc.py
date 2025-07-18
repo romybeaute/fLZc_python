@@ -5,6 +5,12 @@ import os
 import sys
 import importlib.resources as pkg_res
 
+
+"""
+Interfaces the LZ functions defined in the .c files (in core), using ctypes.
+
+"""
+
 DSEPCHAR = '.'
 
 
